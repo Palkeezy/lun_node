@@ -4,10 +4,14 @@ const app = express();
 const db = require('./dataBase').getInstance();
 db.setModels();
 
-const {userRouter, houseRouter} = require('./routes');
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+const {userRouter, houseRouter, authRouter} = require('./routes');
 
 app.use('/user', userRouter);
 app.use('/house', houseRouter);
+app.use('/auth', authRouter);
 
 
 

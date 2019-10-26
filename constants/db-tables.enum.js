@@ -1,0 +1,8 @@
+module.exports = {
+    USER: 'User',
+    HOUSE: 'House',
+    HOUSE_STATUS: 'HouseStatus',
+    OAUTH_TOKEN: 'OAuthToken',
+    ROLE: 'Role',
+    USER_STATUS: 'UserStatus'
+};
