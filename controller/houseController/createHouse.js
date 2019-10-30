@@ -5,8 +5,9 @@ const {USER_ROLES, USER_STATUS} = require('../../constants');
 module.exports = async (req, res) => {
     try {
         const house = req.body;
+        const {user_id} = req.user;
 
-        house.user_id = 1; // TODO
+        house.user_id = user_id;
 
         await houseService.createHouse(house);
 

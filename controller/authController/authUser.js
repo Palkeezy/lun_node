@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     } catch (e) {
         res.status(e.status).json({
             message: e.message,
-            controller: 'auth user'
+            controller: e.controller || 'authUser'
         })
     }
 };
