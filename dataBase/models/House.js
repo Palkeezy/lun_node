@@ -13,8 +13,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DOUBLE,
             allowNull: false
         },
-        city: {
-            type: DataTypes.STRING
+        city_id: {
+            type: DataTypes.INTEGER,
+            foreignKey: true
         },
         price: {
             type: DataTypes.DOUBLE,
@@ -22,7 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         status_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            foreignKey: true
+        },
+        rooms: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     }, {
         tableName: 'house',
@@ -31,9 +36,11 @@ module.exports = (sequelize, DataTypes) => {
 
     const User = sequelize.import('./User.js');
     const HouseStatus = sequelize.import('./HouseStatus.js');
+    const City = sequelize.import('./City.js');
 
     House.belongsTo(User, {foreignKey: 'user_id'});
-    HouseStatus.belongsTo(User, {foreignKey: 'status_id'});
+    House.belongsTo(HouseStatus, {foreignKey: 'status_id'});
+    House.belongsTo(City, {foreignKey: 'city_id'});
 
     return House;
 };

@@ -4,5 +4,6 @@ module.exports = {
     HOUSE_STATUS: 'HouseStatus',
     OAUTH_TOKEN: 'OAuthToken',
     ROLE: 'Role',
-    USER_STATUS: 'UserStatus'
+    USER_STATUS: 'UserStatus',
+    CITY: 'City'
 };
