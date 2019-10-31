@@ -6,6 +6,7 @@ const {authMiddleware, cityMiddleware, houseMiddleware} = require('../../middlew
 router.post(
     '/',
     authMiddleware.checkAccessTokenMiddleware,
+    authMiddleware.getUserFromTokenMiddleware,
     cityMiddleware.checkIsCityPresent,
     houseMiddleware.checkIsStatusPresent,
     houseController.createHouse);

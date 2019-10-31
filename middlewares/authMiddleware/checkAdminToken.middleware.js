@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
         return next(new ErrorHandler('no Token', 403, 'checkAccessToken'));
     }
 
-    tokenVerificator(token, 'user');
+    tokenVerificator(token, 'admin');
 
     next();
 };

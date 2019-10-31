@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     try {
         const {email, password} = req.body;
 
-        const isUserPresent = await userService.getUserByParams({email, role_id: USER_ROLES.USER});
+        const isUserPresent = await userService.getUserByParams({email, role_id: USER_ROLES.ADMIN});
 
         if (!isUserPresent) {
             throw new ErrorHandler('User is not present', 404, 'authUser');
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
 
         await checkPasswordHash(isUserPresent.password, password);
 
-        const tokens = tokenizer(JWT_METHOD.USER);
+        const tokens = tokenizer(JWT_METHOD.ADMIN);
 
 
         tokens.user_id = isUserPresent.id;

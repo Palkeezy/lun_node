@@ -1,4 +1,6 @@
 module.exports = {
     ACCESS: 'sdfsdhsdwetgsdff',
-    REFRESH: 'dfhdfgdsfsd_fsd_df'
+    ADMIN_ACCESS: 'dgsdfs sdfsdhsdwetgsdff',
+    REFRESH: 'dfhdfgdsfsd_fsd_df',
+    ADMIN_REFRESH: 'dfhdfgd dgfdfgdsfsd_fsd_df'
 };
