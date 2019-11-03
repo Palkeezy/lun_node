@@ -24,14 +24,13 @@ module.exports = async (req, res) => {
 
         tokens.user_id = isUserPresent.id;
 
-        oauthService.insertTokenPair(
+        await oauthService.insertTokenPair(
             {
                 user_id: isUserPresent.id,
                 ...tokens
             });
 
         res.json(tokens);
-
 
     } catch (e) {
         res.status(e.status).json({

@@ -1,5 +1,6 @@
 const ErrorHandler = require('../../error/ErrorHandler');
 const {tokenVerificator} = require('../../helpers');
+const {JWT_METHOD} = require('../../constants');
 
 module.exports = async (req, res, next) => {
     const token = req.get('Authorization');
@@ -8,7 +9,7 @@ module.exports = async (req, res, next) => {
         return next(new ErrorHandler('no Token', 403, 'checkAccessToken'));
     }
 
-    tokenVerificator(token, 'admin');
+    tokenVerificator(token, JWT_METHOD.ADMIN);
 
     next();
 };
