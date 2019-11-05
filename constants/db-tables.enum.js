@@ -5,5 +5,7 @@ module.exports = {
     OAUTH_TOKEN: 'OAuthToken',
     ROLE: 'Role',
     USER_STATUS: 'UserStatus',
-    CITY: 'City'
+    CITY: 'City',
+    HOUSE_DOC: 'HouseDoc',
+    HOUSE_PHOTO: 'HousePhoto'
 };

@@ -1,6 +1,4 @@
-const ErrorHandler = require('../../error/ErrorHandler');
 const {houseService} = require('../../service');
-const {USER_ROLES, USER_STATUS} = require('../../constants');
 
 module.exports = async (req, res) => {
     try {

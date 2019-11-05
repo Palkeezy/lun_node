@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
     const userFromRefreshToken = await authService.getUserFromTokenByParams({refresh_token: token});
 
     if (!userFromRefreshToken) {
-        return next(new ErrorHandler('No user', 404, 'checkRefreshToken'))
+        return next(new ErrorHandler('No user', 404, 'getUserFromRefreshToken'))
     }
 
     req.user = userFromRefreshToken;

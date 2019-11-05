@@ -1,15 +1,30 @@
+const fs = require('fs-extra');
+const {resolve} = require('path');
 const {userService} = require('../../service');
 const {USER_ROLES, USER_STATUS} = require('../../constants');
 const {passwordHasher} = require('../../helpers');
+const uuid = require('uuid').v1();
 
 module.exports = async (req, res) => {
     try {
         const user = req.body;
+        const [photo] = req.photos;
+        const appRoot = global.appRoot;
 
         user.role_id = USER_ROLES.USER;
         user.status_id = USER_STATUS.ACTIVE;
         user.password = await passwordHasher(user.password);
-        await userService.createUser(user);
+
+        const {id} = await userService.createUser(user);
+        const photoDir = `user/${id}/photos`;
+        const photoExtension = photo.name.split('.').pop();
+        const photoName = `${uuid}.${photoExtension}`;
+
+        await fs.mkdirSync(resolve(appRoot, 'public', photoDir), {recursive: true});
+
+        await photo.mv(resolve(appRoot, 'public', photoDir, photoName));
+
+        await userService.updateUserByParams({photo_path: `${photoDir}/${photoName}`}, {id});
 
         res.status(201).end();
     } catch (e) {
